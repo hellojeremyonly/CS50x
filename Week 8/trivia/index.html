@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            document.addEventListener('DOMContentLoaded', (event) => {
+                // multiple choice
+                document.querySelectorAll('.answer').forEach(item => {
+                    item.addEventListener('click', event => {
+                        if (event.target.classList.contains('correct')) {
+                            event.target.style.backgroundColor = 'green';
+                            document.getElementById('feedback1').textContent = 'Correct!';
+                        } else {
+                            event.target.style.backgroundColor = 'red';
+                            document.getElementById('feedback1').textContent = 'Incorrect';
+                        }
+                    })
+                })
+                // free response
+                document.getElementById('confirm').addEventListener('click', () => {
+                    let response = document.getElementById('response');
+                    if (response.value.toLowerCase() === 'george orwell') {
+                        response.style.backgroundColor = 'green';
+                        document.getElementById('feedback2').textContent = 'Correct!';
+                    } else {
+                        response.style.backgroundColor = 'red';
+                        document.getElementById('feedback2').textContent = 'Incorrect';
+                    }
+                })
+            })
+            </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <!-- TODO: Add multiple choice question here -->
+                <h3>What is the capital of Thailand?</h3>
+                <button class="answer">Kuala Lumpur</button>
+                <button class="answer">Jakarta</button>
+                <button class="answer correct">Bangkok</button>
+                <p id="feedback1"></p>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <!-- TODO: Add free response question here -->
+                <h3>Who wrote the book 1984?</h3>
+                <input id="response" type="text">
+                <button id="confirm">Confirm</button>
+                <p id="feedback2"></p>
+            </div>
+        </div>
+    </body>
+</html>
